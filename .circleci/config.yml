@@ -7,7 +7,7 @@ jobs:
     branches: 
       only: 
         - master
-    steps:
+    step:
       - add_ssh_keys:
         fingerprints:
           |
