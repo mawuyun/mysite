@@ -1,22 +1,22 @@
-
-version: 2
-job:
+version: 2.1
+jobs:
   build:
     docker:
-      -image: circleci/node:14.15.0
+      - image: circleci/node:14.15.0
     branches: 
-      only: 
-        -master
+      only: |
+        master
     steps:
-      add_ssh_keys:
-        fingerprints:
-          - 3c:d3:d6:81:66:b5:f6:2b:be:78:41:f6:a5:f8:4d:9c
+      - add_ssh_keys:
+          fingerprints: [
+            3c:d3:d6:81:66:b5:f6:2b:be:78:41:f6:a5:f8:4d:9c
+          ]
       - checkout
-      -run: echo "first times"
-      -run: npm -v
-      -run:
-        name: Install
-        command: npm install
-      -run:
-        name: Build
-        command: npm run docs:build
+      - run: npm install
+      - run: npm run docs:build
+workflows:
+  my-workflow:
+    jobs:
+      - build
+
+
