@@ -1,20 +1,22 @@
 version: 2.1
-orbs:
-  welcome: circleci/welcome-orb@0.4.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14.15.0
+    branches: 
+      only: |
+        master
+    steps:
+      - add_ssh_keys:
+          fingerprints: [
+            3c:d3:d6:81:66:b5:f6:2b:be:78:41:f6:a5:f8:4d:9c
+          ]
+      - checkout
+      - run: npm install
+      - run: npm run docs:build
 workflows:
-  welcome:
+  my-workflow:
     jobs:
-      build:
-        docker:
-          - image: circleci/node:14.15.0
-        branches: 
-          only:
-            - master
-        steps:
-          - add_ssh_keys:
-              fingerprints:
-                |
-                3c:d3:d6:81:66:b5:f6:2b:be:78:41:f6:a5:f8:4d:9c
-          - checkout
-          - run: npm install
-          - run: npm run docs:build
+      - build
+
+
