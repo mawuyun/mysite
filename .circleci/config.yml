@@ -9,7 +9,8 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      |
+      welcome/run
       build:
         docker:
           - image: circleci/node:14.15.0
