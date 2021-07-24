@@ -13,9 +13,5 @@ jobs:
           |
           3c:d3:d6:81:66:b5:f6:2b:be:78:41:f6:a5:f8:4d:9c 
       - checkout
-      - run:
-        name: Install
-        command: npm install
-      - run:
-        name: Build
-        command: npm run docs:build
+      - run: npm install
+      - run: npm run docs:build
